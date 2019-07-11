@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    app:cardCornerRadius="10dp"
+    android:layout_margin="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textAllCaps="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="17sp"
+            android:padding="10dp"
+            android:text="roomname"
+            android:id="@+id/roomName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:text="service challenge time"
+            android:layout_below="@id/roomName"
+            android:id="@+id/serviceChallengeTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="running time"
+            android:layout_below="@id/serviceChallengeTime"
+            android:id="@+id/runningTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="date time"
+            android:layout_below="@id/runningTime"
+            android:id="@+id/dateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_margin="10dp"
+            android:id="@+id/sep"
+            android:layout_below="@+id/dateTime"
+            android:background="@color/colorLtGrey"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            />
+
+        <LinearLayout
+            android:layout_below="@id/sep"
+            android:id="@+id/linear"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_vertical"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="Item name"
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="Qty"
+                android:id="@+id/itemQty"
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@id/linear"
+            android:id="@+id/listOrderDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_below="@id/listOrderDetails"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlack"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:text="notes"
+
+            android:id="@+id/notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="cashier"
+            android:layout_below="@id/notes"
+            android:id="@+id/cashierName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_selector"
+            android:id="@+id/btnBump"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/cashierName"
+            android:text="BUMP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

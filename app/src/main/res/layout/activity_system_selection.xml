@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SystemSelectionActivity"
+    android:id="@+id/rootView">
+
+    <TextView
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:id="@+id/tvHeader"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select system to use"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/separator"
+        android:layout_below="@id/tvHeader"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLtGrey"
+        />
+
+
+    <Button
+        android:layout_margin="10dp"
+        android:layout_below="@id/separator"
+        android:id="@+id/btnEnterKitchen"
+        android:textColor="@color/colorWhite"
+        android:text="KITCHEN"
+        android:background="@drawable/button_selector"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <Button
+        android:layout_margin="10dp"
+        android:layout_below="@id/btnEnterKitchen"
+        android:id="@+id/btnEnterDispatch"
+        android:textColor="@color/colorWhite"
+        android:text="DISPATCH"
+        android:background="@drawable/button_selector"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+</RelativeLayout>

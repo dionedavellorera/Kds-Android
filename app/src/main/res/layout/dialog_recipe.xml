@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/dialog_header_partial"
+        android:id="@+id/header"/>
+
+    <ScrollView
+        android:layout_below="@id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:scaleType="center"
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_close_white_24dp"/>
+            <TextView
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:padding="10dp"
+                android:layout_below="@id/image"
+                android:id="@+id/itemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Item Name"/>
+            <View
+                android:id="@+id/separator"
+                android:layout_below="@id/itemName"
+                android:background="@color/colorLtGrey"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:textSize="16sp"
+                android:padding="10dp"
+                android:layout_below="@id/separator"
+                android:id="@+id/itemRecipeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How to cook?"/>
+
+            <ImageView
+                android:layout_margin="5dp"
+                android:id="@+id/playVideo"
+                android:layout_below="@id/separator"
+                android:layout_alignParentRight="true"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_ondemand_video_24dp"/>
+            <View
+                android:layout_marginLeft="15dp"
+                android:id="@+id/separator1"
+                android:layout_below="@id/itemRecipeLabel"
+                android:background="@color/colorLtGrey"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:textSize="16sp"
+                android:padding="10dp"
+                android:layout_below="@id/separator1"
+                android:id="@+id/itemRecipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="How to cook?"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
