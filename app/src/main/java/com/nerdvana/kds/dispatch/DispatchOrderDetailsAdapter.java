@@ -1,4 +1,4 @@
-package com.nerdvana.kds.kitchen;
+package com.nerdvana.kds.dispatch;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -16,7 +16,7 @@ import com.nerdvana.kds.model.OrderDetailsModel;
 
 import java.util.List;
 
-public class KitchenOrderDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DispatchOrderDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<OrderDetailsModel> orderDetailsList;
 
     private OrderDetailsAction orderDetailsAction;
@@ -25,9 +25,9 @@ public class KitchenOrderDetailsAdapter extends RecyclerView.Adapter<RecyclerVie
 
     private SparseBooleanArray itemStateArray= new SparseBooleanArray();
 
-    public KitchenOrderDetailsAdapter(List<OrderDetailsModel> orderDetailsList,
-                                      OrderDetailsAction orderDetailsAction,
-                                      Context context) {
+    public DispatchOrderDetailsAdapter(List<OrderDetailsModel> orderDetailsList,
+                                       OrderDetailsAction orderDetailsAction,
+                                       Context context) {
         this.orderDetailsList = orderDetailsList;
         this.orderDetailsAction = orderDetailsAction;
         this.ctx = context;
@@ -36,7 +36,7 @@ public class KitchenOrderDetailsAdapter extends RecyclerView.Adapter<RecyclerVie
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new KitchenOrderDetailsAdapter.ViewHolder(
+        return new DispatchOrderDetailsAdapter.ViewHolder(
                 LayoutInflater.from(viewGroup.getContext())
                         .inflate(R.layout.list_item_order_details, viewGroup, false));
     }
@@ -59,7 +59,7 @@ public class KitchenOrderDetailsAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int i) {
         final OrderDetailsModel model = orderDetailsList.get(i);
-        if(holder instanceof KitchenOrderDetailsAdapter.ViewHolder){
+        if(holder instanceof DispatchOrderDetailsAdapter.ViewHolder){
 
             if (!model.isChecked()) {
 

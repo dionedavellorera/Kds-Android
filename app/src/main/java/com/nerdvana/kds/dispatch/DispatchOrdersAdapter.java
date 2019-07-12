@@ -1,4 +1,4 @@
-package com.nerdvana.kds.kitchen;
+package com.nerdvana.kds.dispatch;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -18,17 +18,17 @@ import com.nerdvana.kds.model.OrderListModel;
 
 import java.util.List;
 
-public class KitchenOrdersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DispatchOrdersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<OrderListModel> orderList;
     private Context context;
-    KitchenOrderDetailsAdapter kitchenOrderDetailsAdapter;
+    DispatchOrderDetailsAdapter dispatchOrderDetailsAdapter;
     RecyclerView.RecycledViewPool recycledViewPool = new RecyclerView.RecycledViewPool();
     OrderListModel model;
     private OrderListAction orderListAction;
 
-    public KitchenOrdersAdapter(List<OrderListModel> orderList, Context context,
-                                OrderListAction orderListAction) {
+    public DispatchOrdersAdapter(List<OrderListModel> orderList, Context context,
+                                 OrderListAction orderListAction) {
         this.orderList = orderList;
         this.context = context;
         this.orderListAction = orderListAction;
@@ -38,7 +38,7 @@ public class KitchenOrdersAdapter extends RecyclerView.Adapter<RecyclerView.View
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new KitchenOrdersAdapter.ViewHolder(
+        return new DispatchOrdersAdapter.ViewHolder(
                 LayoutInflater.from(viewGroup.getContext())
                         .inflate(R.layout.list_item_orders, viewGroup, false));
     }
@@ -73,7 +73,7 @@ public class KitchenOrdersAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int i) {
         model = orderList.get(holder.getAdapterPosition());
-        if(holder instanceof KitchenOrdersAdapter.ViewHolder){
+        if(holder instanceof DispatchOrdersAdapter.ViewHolder){
 
 
             ((ViewHolder) holder)
@@ -124,19 +124,19 @@ public class KitchenOrdersAdapter extends RecyclerView.Adapter<RecyclerView.View
                     orderListAction.itemLongClicked(orderDetailsModel);
                 }
             };
-            kitchenOrderDetailsAdapter =
-                    new KitchenOrderDetailsAdapter(model.getOrderDetailsList(), orderDetailsAction,
+            dispatchOrderDetailsAdapter =
+                    new DispatchOrderDetailsAdapter(model.getOrderDetailsList(), orderDetailsAction,
                             context);
             ((ViewHolder)holder)
                     .listOrderDetails
                     .setLayoutManager(new LinearLayoutManager(context));
             ((ViewHolder)holder)
                     .listOrderDetails
-                    .setAdapter(kitchenOrderDetailsAdapter);
+                    .setAdapter(dispatchOrderDetailsAdapter);
             ((ViewHolder)holder)
                     .listOrderDetails
                     .setRecycledViewPool(recycledViewPool);
-            kitchenOrderDetailsAdapter.notifyDataSetChanged();
+            dispatchOrderDetailsAdapter.notifyDataSetChanged();
             ((ViewHolder)holder)
                     .bumpOrder
                     .setOnClickListener(new View.OnClickListener() {

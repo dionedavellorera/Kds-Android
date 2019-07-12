@@ -4,26 +4,33 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.nerdvana.kds.R;
+import com.nerdvana.kds.actions.LoginAction;
+import com.nerdvana.kds.actions.OrderListAction;
 import com.nerdvana.kds.bases.BaseActivity;
 import com.nerdvana.kds.custom.Helper;
+import com.nerdvana.kds.custom.SharedPreferenceManager;
+import com.nerdvana.kds.dialog.LoginDialog;
 import com.nerdvana.kds.dialog.RecipeDialog;
 import com.nerdvana.kds.login.LoginFragment;
 import com.nerdvana.kds.model.OrderDetailsModel;
 import com.nerdvana.kds.model.OrderListModel;
+import com.nerdvana.kds.model.UserModel;
 import com.nerdvana.kds.viewmodel.OrdersViewModel;
+import com.nerdvana.kds.viewmodel.UsersViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainKitchen extends BaseActivity implements OrderListAction{
+public class MainKitchen extends BaseActivity implements OrderListAction, LoginAction {
 
 
     private FrameLayout leftFrame;
@@ -38,8 +45,13 @@ public class MainKitchen extends BaseActivity implements OrderListAction{
 
     List<OrderListModel> orderList = new ArrayList<>();
 
+    private LoginDialog loginDialog;
+
     RecipeDialog recipeDialog;
 
+    private UsersViewModel usersViewModel;
+
+    private List<UserModel> userList;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +62,42 @@ public class MainKitchen extends BaseActivity implements OrderListAction{
 
         initializeViews();
 
+        userList = new ArrayList<>();
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+        userList.add(new UserModel(656, "10655",
+                "Dione Dave Llorera", "Android Developer"));
+
+
+
         if (isTwoPane()) {
             openFragment(loginFragment, R.id.leftFrame);
         }
+
+        usersViewModel = ViewModelProviders.of(this).get(UsersViewModel.class);
+
 
         ordersViewModel = ViewModelProviders.of(this).get(OrdersViewModel.class);
 
@@ -120,14 +165,21 @@ public class MainKitchen extends BaseActivity implements OrderListAction{
 
     @Override
     public void bumpClicked(int position) {
-        if (ordersViewModel.isOrdersValidForBump(orderList.get(position).getOrderDetailsList())) {
-            Helper.showDialogMessage(MainKitchen.this, "Order submitted to dispatch", "Information");
-            ordersViewModel.removeItemFromList(orderList, position);
-            kitchenOrdersAdapter.notifyItemRemoved(position);
 
+        if (usersViewModel.hasLoggedInUser(userList)) {
+            if (ordersViewModel.isOrdersValidForBump(orderList.get(position).getOrderDetailsList())) {
+                Helper.showDialogMessage(MainKitchen.this, "Order submitted to dispatch", "Information");
+                ordersViewModel.removeItemFromList(orderList, position);
+                kitchenOrdersAdapter.notifyItemRemoved(position);
+
+            } else {
+                Helper.showDialogMessage(MainKitchen.this, "Order not yet ready for dispatch", "Information");
+            }
         } else {
-            Helper.showDialogMessage(MainKitchen.this, "Order not yet ready for dispatch", "Information");
+            Helper.showDialogMessage(MainKitchen.this, "No Logged in users", "Information");
         }
+
+
     }
 
     @Override
@@ -151,5 +203,64 @@ public class MainKitchen extends BaseActivity implements OrderListAction{
 
             recipeDialog.show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        SharedPreferenceManager.clearPreference();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_login, menu);
+
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_login:
+                if (loginDialog == null) {
+
+                    openLoginDialog();
+
+                }
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void openLoginDialog() {
+
+
+        loginDialog = new LoginDialog(MainKitchen.this, userList, this);
+
+        loginDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                loginDialog = null;
+            }
+        });
+
+        loginDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                loginDialog = null;
+            }
+        });
+
+        loginDialog.show();
+    }
+
+    @Override
+    public void userClicked(int position) {
+
     }
 }

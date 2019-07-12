@@ -15,7 +15,6 @@ public class OrdersRepository {
     private MutableLiveData<List<OrderListModel>> ordersLiveData = new MutableLiveData<>();
 
     public static OrdersRepository getInstance() {
-
         if(INSTANCE == null) {
             synchronized (OrdersRepository.class) {
                 if(INSTANCE == null) {

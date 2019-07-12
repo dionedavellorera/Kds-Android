@@ -1,4 +1,4 @@
-package com.nerdvana.kds.kitchen;
+package com.nerdvana.kds.actions;
 
 import com.nerdvana.kds.model.OrderDetailsModel;
 

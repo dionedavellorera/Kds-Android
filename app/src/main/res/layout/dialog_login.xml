@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/dialog_header_partial" android:id="@+id/header"/>
+
+
+    <TextView
+        android:layout_below="@id/header"
+        android:padding="10dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:id="@+id/tvHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chef list"/>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_below="@id/tvHeader"
+        android:background="@color/colorLtGrey"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/separator"
+        android:layout_above="@id/linearForm"
+        android:id="@+id/rvUserList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/linearForm"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:background="@color/colorLtGrey"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+        <TextView
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:text="User Login"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:inputType="text"
+                android:hint="username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:hint="password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_selector"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

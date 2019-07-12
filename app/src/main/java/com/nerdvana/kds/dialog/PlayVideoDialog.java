@@ -51,12 +51,9 @@ public class PlayVideoDialog extends BaseDialog {
                     isVideoPlaying = true;
                     videoView.start();
                 }
-
             }
         });
-
     }
-
     private void initializeViews() {
         videoView = findViewById(R.id.videoView);
     }
